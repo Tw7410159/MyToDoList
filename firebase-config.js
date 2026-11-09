@@ -24,12 +24,12 @@ import {
 // 預設值已填入 projectId / authDomain；apiKey 與 appId
 // 請在「Firebase 設定」彈窗中填入後儲存，系統會存至 localStorage。
 const DEFAULT_CONFIG = {
-  apiKey:            "",                                       // 必填
+  apiKey:            "AIzaSyCeU9k40oXBzP7Dtlcwuk4sUm0oy8Wtrdo",
   authDomain:        "my-to-do-list-9a809.firebaseapp.com",
   projectId:         "my-to-do-list-9a809",
   storageBucket:     "my-to-do-list-9a809.firebasestorage.app",
-  messagingSenderId: "",                                       // 可選
-  appId:             ""                                        // 可選
+  messagingSenderId: "5756675277",
+  appId:             "1:5756675277:web:fa149063a3c1e37bee3584"
 };
 
 // ─── 本地設定讀寫 ─────────────────────────────────────────────
