@@ -1,0 +1,112 @@
+/* style.css — MyToDoList 自訂樣式 */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+TC:wght@400;500;700&display=swap');
+
+/* ── 全域 ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Noto Sans TC', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── 自訂捲軸 ──────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ── 待辦事項卡片懸浮效果 ──────────────────────── */
+.todo-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.todo-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0,0,0,.07);
+}
+
+/* ── 刪除線完成狀態 ────────────────────────────── */
+.line-through-anim {
+  position: relative;
+  transition: color .2s;
+}
+.line-through-anim::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  width: 0; height: 1.5px;
+  background: currentColor;
+  transition: width .3s ease;
+}
+.completed .line-through-anim::after { width: 100%; }
+
+/* ── 優先級標籤 ────────────────────────────────── */
+.priority-high   { @apply bg-rose-50   text-rose-700   border-rose-200;   }
+.priority-medium { @apply bg-amber-50  text-amber-700  border-amber-200;  }
+.priority-low    { @apply bg-emerald-50 text-emerald-700 border-emerald-200; }
+
+/* ── 清單側邊欄項目 Active 狀態 ───────────────── */
+.list-item-active {
+  background: #eef2ff !important;
+  color: #4338ca !important;
+  font-weight: 600;
+}
+
+/* ── Toast 通知動畫 ────────────────────────────── */
+.toast-in  { animation: toastIn  .25s cubic-bezier(.4,0,.2,1) forwards; }
+.toast-out { animation: toastOut .2s  ease-in forwards; }
+
+@keyframes toastIn  {
+  from { opacity:0; transform:translateY(-12px); }
+  to   { opacity:1; transform:translateY(0);     }
+}
+@keyframes toastOut {
+  from { opacity:1; transform:translateY(0);    }
+  to   { opacity:0; transform:translateY(-12px); }
+}
+
+/* ── 頭像疊加群組 ──────────────────────────────── */
+.avatar-stack { display:flex; align-items:center; }
+.avatar-stack > * { margin-left: -8px; border: 2px solid white; }
+.avatar-stack > *:first-child { margin-left:0; }
+
+/* ── Modal 進場 ────────────────────────────────── */
+.modal-box {
+  animation: modalIn .2s cubic-bezier(.4,0,.2,1);
+}
+@keyframes modalIn {
+  from { opacity:0; transform:scale(.96) translateY(8px); }
+  to   { opacity:1; transform:scale(1)   translateY(0);   }
+}
+
+/* ── 無項目空狀態插畫背景 ──────────────────────── */
+.empty-state-bg {
+  background: radial-gradient(circle at 50% 40%, #eef2ff 0%, transparent 70%);
+}
+
+/* ── 主色 Checkbox ──────────────────────────────── */
+input[type="checkbox"].todo-check {
+  appearance: none;
+  width: 18px; height: 18px;
+  border: 2px solid #cbd5e1;
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all .15s;
+  position: relative;
+}
+input[type="checkbox"].todo-check:checked {
+  background: #6366f1;
+  border-color: #6366f1;
+}
+input[type="checkbox"].todo-check:checked::after {
+  content: '';
+  position: absolute;
+  left: 3px; top: 1px;
+  width: 6px; height: 9px;
+  border: 2px solid white;
+  border-top: none; border-left: none;
+  transform: rotate(45deg);
+}
+input[type="checkbox"].todo-check:hover:not(:checked) {
+  border-color: #818cf8;
+}

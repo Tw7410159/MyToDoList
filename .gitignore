@@ -1,0 +1,28 @@
+# .gitignore — MyToDoList
+
+# 系統檔案
+.DS_Store
+Thumbs.db
+
+# Firebase CLI 本地快取
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# Node（如使用 Firebase CLI）
+node_modules/
+npm-debug.log*
+
+# 編輯器
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# 本地環境設定（請勿上傳 API Key 至 Git）
+.env
+.env.local
+*.env.*
